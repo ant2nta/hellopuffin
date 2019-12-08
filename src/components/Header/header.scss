@@ -1,0 +1,92 @@
+#header {
+  div {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .href {
+    width: 200px;
+  }
+  ._lz6s {
+    background-color: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.0975);
+    // position: fixed;
+    top: 0;
+  }
+  .MWDvN,
+  ._lz6s {
+    align-items: center;
+  }
+  .MWDvN {
+    flex-direction: row;
+    height: 77px;
+    max-width: 1010px;
+    padding: 26px 50px;
+    width: 100%;
+  }
+  .oJZym {
+    flex: 1 9999 0%;
+  }
+
+  .ybXk5 {
+    flex-direction: row;
+  }
+
+  .logo {
+    background-image: url(../../assets/Images/logo/logo1.png);
+    background-repeat: round;
+    height: 24px;
+    width: 32px;
+  }
+  .glyphsSpriteCompass__outline__24__grey_9,
+  .glyphsSpriteHeart__outline__24__grey_9,
+  .glyphsSpriteUser__outline__24__grey_9 {
+    background-image: url(../../assets/Images/b1c882bed79e.png);
+  }
+
+  .u-__7 {
+    display: block;
+  }
+  .XrOey :hover {
+    transform: scale(1.2); /* Увеличиваем масштаб */
+  }
+  .SvO5t {
+    background-color: #262626;
+    height: 28px;
+    margin: 0 16px;
+    width: 1px;
+  }
+
+  .text {
+    background-image: url(../../assets/Images/text.png);
+    background-repeat: round;
+    height: 32px;
+    width: 133px;
+  }
+  ._47KiJ {
+    flex-direction: row;
+  }
+  .glyphsSpriteCompass__outline__24__grey_9 {
+    background-repeat: no-repeat;
+    background-position: -74px -231px;
+    height: 24px;
+    width: 24px;
+  }
+  .XrOey:not(:first-child) {
+    margin-left: 30px;
+  }
+  .glyphsSpriteHeart__outline__24__grey_9 {
+    background-repeat: no-repeat;
+    background-position: -104px -300px;
+    // background-position: -78px -300px;
+    height: 24px;
+    width: 24px;
+  }
+  .glyphsSpriteUser__outline__24__grey_9 {
+    background-repeat: no-repeat;
+    background-position: -234px -274px;
+    height: 24px;
+    width: 24px;
+  }
+}
