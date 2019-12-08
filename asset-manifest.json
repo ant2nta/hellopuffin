@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/hellopuffin/static/css/main.09f12208.chunk.css",
+    "main.js": "/hellopuffin/static/js/main.77c0cf84.chunk.js",
+    "main.js.map": "/hellopuffin/static/js/main.77c0cf84.chunk.js.map",
+    "runtime-main.js": "/hellopuffin/static/js/runtime-main.4b18dbc6.js",
+    "runtime-main.js.map": "/hellopuffin/static/js/runtime-main.4b18dbc6.js.map",
+    "static/js/2.dbb2287e.chunk.js": "/hellopuffin/static/js/2.dbb2287e.chunk.js",
+    "static/js/2.dbb2287e.chunk.js.map": "/hellopuffin/static/js/2.dbb2287e.chunk.js.map",
+    "index.html": "/hellopuffin/index.html",
+    "precache-manifest.a51eb6c09edf519900498ae0a53ff147.js": "/hellopuffin/precache-manifest.a51eb6c09edf519900498ae0a53ff147.js",
+    "service-worker.js": "/hellopuffin/service-worker.js",
+    "static/css/main.09f12208.chunk.css.map": "/hellopuffin/static/css/main.09f12208.chunk.css.map",
+    "static/media/header.scss": "/hellopuffin/static/media/text.4216de1e.png",
+    "static/media/error2.gif": "/hellopuffin/static/media/error2.9e5e57c4.gif"
+  }
+}
