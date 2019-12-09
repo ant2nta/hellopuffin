@@ -60,9 +60,9 @@ class Registration extends React.Component {
         NameValid = value.length >= 3;
         fieldValidationErrors.Name = NameValid ? "" : " is too short";
         break;
-      case "Pass":
+      case "Password":
         PassValid = value.length >= 6;
-        fieldValidationErrors.Pass = PassValid ? "" : " is too short";
+        fieldValidationErrors.Password = PassValid ? "" : " is too short";
         break;
       case "SecondPass":
         SecondPassValid = SecondPass == Password;
