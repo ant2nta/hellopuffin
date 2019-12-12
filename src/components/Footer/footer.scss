@@ -1,10 +1,13 @@
 #myFooter {
-  width: 100%;
-  bottom: 0;
   position: absolute;
-  background-color: coral;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  // height: 80px;
+  // background-color: rgb(250, 250, 250);
   // background-color: tomato;
-  color: #e6e6e6;
+  color: #969696;
+  border-top: 1px solid rgba(0, 0, 0, 0.0975);
 
   ul {
     text-align: center;
@@ -37,6 +40,7 @@
 
 body {
   padding-bottom: 90px;
+  position: relative;
 }
 
 @media screen and (max-width: 814px) {

@@ -4,6 +4,7 @@ import Validate from "../Validate";
 import Cookies from "universal-cookie";
 // import WithOnlineRequire from "../WithOnlineRequire";
 import axios from "axios";
+import $ from "jquery";
 
 class Registration extends React.Component {
   constructor(props) {
@@ -65,7 +66,7 @@ class Registration extends React.Component {
         fieldValidationErrors.Password = PassValid ? "" : " is too short";
         break;
       case "SecondPass":
-        SecondPassValid = SecondPass == Password;
+        SecondPassValid = SecondPass === Password;
         fieldValidationErrors.SecondPass = SecondPassValid
           ? ""
           : " is incorrect";
@@ -99,16 +100,6 @@ class Registration extends React.Component {
     const { state, cookies, props } = this;
     event.preventDefault();
 
-    // axios.get("http://localhost:8000/users").then(function(response) {
-    //   users = response.data;
-    //   users.map(value => {
-    //     if (state.login === value.login && state.pass === value.pass) {
-    //       cookies.set("isLogin", state.login + "_loggined_now");
-    //       props.history.push("/hellopuffin/profile");
-    //     } else console.log("incorrect");
-    //   });
-    // });
-
     axios({
       method: "post",
       url: "http://localhost:8000/users",
@@ -116,10 +107,15 @@ class Registration extends React.Component {
         login: state.login,
         pass: state.pass
       }
-    }).then(() => {
-      cookies.set("isLogin", state.login + "_loggined_now");
-      props.history.push("/hellopuffin/profile");
-    });
+    })
+      .then(() => {
+        cookies.set("isLogin", state.login);
+        props.history.push("/profile");
+      })
+      .catch(() => {
+        console.log("Не правильний логін та/або пароль");
+        $("#logreq").removeClass("delme");
+      });
   };
 
   registerSubmit = event => {
@@ -134,23 +130,14 @@ class Registration extends React.Component {
         pass: state.Password,
         email: state.Email
       }
-    }).then(response => {
-      if (response.status != 200) {
-        alert("Такий логін або пароль вже зареєстрований");
-        console.log("Такий логін або пароль вже зареєстрований");
-      } else {
-        cookies.set("isLogin", state.login + "_loggined_now");
-        props.history.push("/hellopuffin/profile");
-      }
-    });
-    // .catch(res => {
-    //   if (res.status == 470) {
-    //     alert("Email " + state.Email + " вже зареєстрована");
-    //   }
-    //   if (res.status == 471) {
-    //     alert("Логін " + state.Name + " вже зареєстрований");
-    //   }
-    // });
+    })
+      .then(() => {
+        cookies.set("isLogin", state.login);
+        props.history.push("/profile");
+      })
+      .catch(() => {
+        $("#regreq").removeClass("delme2");
+      });
   };
 
   render() {
@@ -168,18 +155,18 @@ class Registration extends React.Component {
     return (
       <div id="reg">
         <div id="container_demo">
-          <a class="hiddenanchor" id="toregister"></a>
-          <a class="hiddenanchor" id="tologin"></a>
+          <a className="hiddenanchor" id="toregister"></a>
+          <a className="hiddenanchor" id="tologin"></a>
           <div id="wrapper">
-            <div id="login" class="animate form">
+            <div id="login" className="animate form">
               <form
                 action="mysuperscript.php"
-                autocomplete="on"
+                autoComplete="on"
                 onSubmit={handleSubmit}
               >
                 <h1>Вхід</h1>
                 <p>
-                  <label for="username" class="uname" data-icon="u">
+                  <label className="uname" data-icon="u">
                     {" "}
                     Логін
                   </label>
@@ -194,7 +181,7 @@ class Registration extends React.Component {
                   />
                 </p>
                 <p>
-                  <label for="password" class="youpasswd" data-icon="p">
+                  <label className="youpasswd" data-icon="p">
                     {" "}
                     Пароль{" "}
                   </label>
@@ -208,38 +195,45 @@ class Registration extends React.Component {
                     onChange={handleChange}
                   />
                 </p>
-                <p class="keeplogin">
+                <p className="keeplogin">
                   <input
                     type="checkbox"
                     name="loginkeeping"
                     id="loginkeeping"
                     value="loginkeeping"
                   />
-                  <label for="loginkeeping">Запам'ятати мене</label>
+                  <label>Запам'ятати мене</label>
                 </p>
-                <p class="login button">
+                <p className="login button">
+                  <span
+                    id="logreq"
+                    className="delme"
+                    style={{ marginRight: 30 + "px" }}
+                  >
+                    Неправильний логін та/або пароль{" "}
+                  </span>
                   <input type="submit" value="Увійти" />
                 </p>
-                <p class="change_link">
+                <p className="change_link">
                   Ще не зареєстровані?
-                  <a href="#toregister" class="to_register">
+                  <a href="#toregister" className="to_register">
                     Приєднуйтесь
                   </a>
                 </p>
               </form>
             </div>
 
-            <div id="register" class="animate form">
+            <div id="register" className="animate form">
               <form
                 action="mysuperscript.php"
-                autocomplete="on"
+                autoComplete="on"
                 onSubmit={registerSubmit}
               >
                 <div id="qwe">
                   <h1> Реєстрація </h1>
 
                   <p>
-                    <label for="usernamesignup" class="uname" data-icon="u">
+                    <label className="uname" data-icon="u">
                       Ваш логін
                     </label>
                     <input
@@ -253,7 +247,7 @@ class Registration extends React.Component {
                     />
                   </p>
                   <p>
-                    <label for="emailsignup" class="youmail" data-icon="e">
+                    <label className="youmail" data-icon="e">
                       {" "}
                       Ваш e-mail
                     </label>
@@ -268,7 +262,7 @@ class Registration extends React.Component {
                     />
                   </p>
                   <p>
-                    <label for="passwordsignup" class="youpasswd" data-icon="p">
+                    <label className="youpasswd" data-icon="p">
                       Ваш пароль{" "}
                     </label>
                     <input
@@ -282,11 +276,7 @@ class Registration extends React.Component {
                     />
                   </p>
                   <p>
-                    <label
-                      for="passwordsignup_confirm"
-                      class="youpasswd"
-                      data-icon="p"
-                    >
+                    <label className="youpasswd" data-icon="p">
                       Підтвердіть пароль{" "}
                     </label>
                     <input
@@ -301,19 +291,27 @@ class Registration extends React.Component {
                   </p>
                 </div>
                 <Validate formErrors={formErrors} />
-                <p class="signin button">
+                <p className="signin button">
+                  <span
+                    id="regreq"
+                    className="delme2"
+                    style={{ marginRight: 100 + "px" }}
+                  >
+                    Логін або email зайнятий
+                  </span>
                   <input
+                    style={{ fontSize: 21 + "px" }}
                     type="submit"
                     value="Зареєструватись"
                     // disabled={!this.state.formValid}
                   />
                 </p>
-                {/* <button class="btn-signup" disabled={!this.state.formValid}>
+                {/* <button className="btn-signup" disabled={!this.state.formValid}>
                   Зареєструватись
                 </button> */}
-                <p class="change_link">
+                <p className="change_link">
                   Уже зареєстровані?
-                  <a href="#tologin" class="to_register">
+                  <a href="#tologin" className="to_register">
                     {" "}
                     Увійдіть на сайт{" "}
                   </a>

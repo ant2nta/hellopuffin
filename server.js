@@ -34,29 +34,61 @@ app.get("/users", (req, res) => {
     users.map(value => {
       newObj.push(Object.values(value)[1]);
     });
-    console.log(newObj);
     res.send(newObj);
+  });
+});
+
+app.post("/user", jsonParser, (req, res) => {
+  if (!req.body) return res.sendStatus(400);
+  const loginw = req.body.login;
+  const db = req.app.locals.collection;
+  db.findOne({ login: loginw }, (err, result) => {
+    if (result != null) {
+      delete result.pass;
+      res.send(result);
+    } else {
+      res.sendStatus(400);
+    }
+  });
+});
+
+app.post("/edit", jsonParser, (req, res) => {
+  if (!req.body) return res.sendStatus(400);
+  const loginw = req.body.login;
+  const db = req.app.locals.collection;
+  const find = { login: loginw };
+  const newInfo = {
+    $set: {
+      email: req.body.email,
+      name: req.body.name,
+      mobile: req.body.mobile,
+      bday: req.body.bday,
+      profession: req.body.profession,
+      status: req.body.status
+    }
+  };
+  db.updateOne(find, newInfo, (err, result) => {
+    if (result != null) {
+      res.sendStatus(200);
+    } else {
+      res.sendStatus(400);
+    }
   });
 });
 
 app.post("/users", jsonParser, (req, res) => {
   if (!req.body) return res.sendStatus(400);
-  const login = req.body.login;
-  const pass = req.body.pass;
+  const loginq = req.body.login;
+  const passq = req.body.pass;
   const db = req.app.locals.collection;
-  db.find({})
-    .sort({ _id: 1 })
-    .toArray((err, result) => {
-      result.map(value => {
-        if (
-          Object.values(value)[1] == login &&
-          Object.values(value)[2] == pass
-        ) {
-          res.send(result);
-          console.log(login + " sign in");
-        }
-      });
-    });
+  db.findOne({ login: loginq }, (err, result) => {
+    if (result != null && Object.values(result)[2] == passq) {
+      console.log(loginq + " is now online");
+      res.sendStatus(200);
+    } else {
+      res.sendStatus(401);
+    }
+  });
 });
 
 app.post("/new", jsonParser, (req, res) => {
@@ -68,7 +100,12 @@ app.post("/new", jsonParser, (req, res) => {
     _id: usersCount,
     login: req.body.login,
     pass: req.body.pass,
-    email: req.body.email
+    email: req.body.email,
+    name: "",
+    mobile: "",
+    bday: "",
+    profession: "",
+    status: ""
   };
 
   db.findOne({ login: req.body.login }, (err, resLog) => {
@@ -80,8 +117,6 @@ app.post("/new", jsonParser, (req, res) => {
             res.sendStatus(200);
           });
           fs.writeFileSync("./src/assets/count.txt", usersCount);
-        } else {
-          res.sendStatus(403);
         }
       });
     } else {

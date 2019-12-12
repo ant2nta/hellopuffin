@@ -10,7 +10,7 @@ const Header = () => {
         <div className="_lz6s">
           <div className="MWDvN ">
             <div className="oJZym">
-              <Link to="/hellopuffin">
+              <Link to="/">
                 <div className="ybXk5">
                   <span aria-label="Hello puffin" className="logo"></span>
                   <div className="SvO5t"></div>
@@ -23,7 +23,7 @@ const Header = () => {
             <div className="ctQZg">
               <div className="_47KiJ">
                 <div className="XrOey">
-                  <Link to="/hellopuffin/users">
+                  <Link to="/users">
                     <span
                       // aria-label="Найти людей"
                       className="glyphsSpriteCompass__outline__24__grey_9 u-__7"
@@ -31,7 +31,7 @@ const Header = () => {
                   </Link>
                 </div>
                 <div className="XrOey">
-                  <Link to="/hellopuffin">
+                  <Link to="/">
                     <span
                       // aria-label="Что нового"
                       className="glyphsSpriteHeart__outline__24__grey_9 u-__7"
@@ -39,7 +39,7 @@ const Header = () => {
                   </Link>
                 </div>
                 <div className="XrOey">
-                  <Link to="/hellopuffin/profile">
+                  <Link to="/profile">
                     <span
                       // aria-label="Профиль"
                       className="glyphsSpriteUser__outline__24__grey_9 u-__7"

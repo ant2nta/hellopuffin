@@ -1,0 +1,30 @@
+table {
+    margin: 0 auto;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    border-collapse: collapse;
+    color: #686461;
+    width: 935px;
+  }
+  caption {
+    padding: 10px;
+    color: white;
+    background: #5549fc;
+    font-size: 18px;
+    text-align: left;
+    caption-side: top;
+    font-weight: bold;
+  }
+  th {
+    border-bottom: 3px solid #79e2ff;
+    padding: 10px;
+    text-align: left;
+  }
+  td {
+    padding: 10px;
+  }
+  tr:nth-child(odd) {
+    background: white;
+  }
+  tr:nth-child(even) {
+    background: #97e2ff;
+  }

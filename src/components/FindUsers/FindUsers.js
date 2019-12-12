@@ -35,6 +35,7 @@ const FindUsers = () => {
   return (
     <div>
       <table className="table table-condensed table-striped table-bordered">
+        <caption>Пошук користувачів</caption>
         <thead>
           <tr>
             <th>Id</th>

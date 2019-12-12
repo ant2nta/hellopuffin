@@ -7,12 +7,12 @@ function WithOnlineRequire(Component) {
   class LoginedCheck extends React.Component {
     componentDidMount() {
       if (!cookies.get("isLogin")) {
-        this.props.history.push("/hellopuffin/login");
+        this.props.history.push("/login");
       }
     }
     componentDidUpdate() {
       if (!cookies.get("isLogin")) {
-        this.props.history.push("/hellopuffin/login");
+        this.props.history.push("/login");
       }
     }
     render() {
